@@ -9,13 +9,6 @@
 - 主评估口径：EasyEdit 内部指标，即 `rewrite_acc`、`rephrase_acc`、`locality_acc`
 - 补充评估口径：编辑后自由生成结果的严格字符串包含匹配
 
-## 问题修正说明
-
-初版实验结果与同类仓库差异较大，主要不是算法完全失效，而是评估口径和 EasyEdit 调用方式不一致。参考同类实现后，我修正了三点：
-
-1. 在自定义事实数据中补充 `subject` 字段，避免 ROME 自动定位时把 `is` 一并纳入 subject。
-2. 在 ROME 和 MEMIT 调用 EasyEdit 时显式传入 `rephrase_prompts` 和 `locality_inputs`，让 EasyEdit 原生计算 PS 与 NS。
-3. 在 `evaluate.py` 中同时输出 EasyEdit 内部指标和自由生成严格匹配指标，避免把两种口径混在一起。
 
 ## 任务 1：基线评估
 
